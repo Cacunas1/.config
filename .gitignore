@@ -13,3 +13,17 @@
 !*.conf
 
 !./sway/
+Code - OSS/
+GitHub Desktop/
+Psst/
+dconf/
+emacs/
+go/
+google-chrome/
+htop/
+menus/
+nemo/
+pulse/
+qt6ct/
+xarchiver/
+zed/
