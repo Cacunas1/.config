@@ -1,0 +1,16 @@
+[terminal.shell]
+program = "zsh"
+args = ["-l", "-c", "zellij"]
+
+[window]
+decorations = "Transparent"
+opacity = 0.8
+blur = true
+
+[font]
+normal = { family = "Source Code Pro", style = "Regular" }
+bold = { family = "Source Code Pro", style = "Bold" }
+italic = { family = "Source Code Pro", style = "Italic" }
+bold_italic = { family = "Source Code Pro", style = "Italic Bold" }
+
+[terminal]
