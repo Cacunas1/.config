@@ -1,0 +1,15 @@
+*.*
+
+!.gitignore
+
+!./nvim/
+
+!*.lua
+
+!./hypr/
+!*.json
+
+!./wofi/
+!*.conf
+
+!./sway/
