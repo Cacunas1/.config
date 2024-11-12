@@ -91,6 +91,48 @@ return {
           },
         }
       end,
+      ['mojo'] = function(server_name)
+        lspconfig[server_name].setup {
+          cmd = { '/home/cacunas/.modular/pkg/packages.modular.com_mojo/bin/mojo-lsp-server' },
+          filetypes = { 'mojo' },
+          root_dir = lspconfig.util.root_pattern('.git', 'pyproject.toml'),
+          capabilities = capabilities,
+          -- Add environment setup for Mojo
+          on_init = function(client)
+            -- Ensure Mojo environment variables are set
+            local env = vim.fn.environ()
+            if env['MODULAR_HOME'] == nil then
+              env['MODULAR_HOME'] = '/home/cacunas/.modular'
+            end
+            if env['PATH']:find(env['MODULAR_HOME'] .. '/pkg/packages.modular.com_mojo/bin') == nil then
+              env['PATH'] = env['MODULAR_HOME'] .. '/pkg/packages.modular.com_mojo/bin:' .. env['PATH']
+            end
+            return true
+          end,
+          settings = {
+            -- You can add specific LSP settings here if needed
+            mojo = {
+              diagnostics = {
+                enable = true,
+              },
+              completion = {
+                enable = true,
+              },
+            },
+          },
+        }
+      end,
+    }
+
+    -- File type detection for Mojo
+    vim.filetype.add {
+      extension = {
+        mojo = 'mojo',
+        ['🔥'] = 'mojo', -- Support for the fire emoji extension
+      },
+      pattern = {
+        ['.*%.mojo'] = 'mojo',
+      },
     }
   end,
 }

@@ -27,6 +27,8 @@ pulse/
 qt6ct/
 xarchiver/
 zed/
+google-chrome-unstable/
+vlc/
 
 !./alacritty/
 !*.toml
