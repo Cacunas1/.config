@@ -29,6 +29,7 @@ xarchiver/
 zed/
 google-chrome-unstable/
 vlc/
+libreoffice/
 
 !./alacritty/
 !*.toml
