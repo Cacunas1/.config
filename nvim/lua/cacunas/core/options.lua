@@ -36,3 +36,7 @@ opt.splitbelow = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10
+
+-- Set spellchecker languages
+opt.spell = true
+opt.spelllang = { 'en', 'es' }

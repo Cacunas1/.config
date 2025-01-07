@@ -49,3 +49,10 @@ ncspot/
 
 !*.config
 
+/QtProject.conf
+/baloofilerc
+/ghb/
+/github-copilot/
+/lem/
+/neofetch/
+/qBittorrent/

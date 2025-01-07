@@ -9,6 +9,7 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
+        "hyprland/workspaces",
         "custom/sep",
         "sway/mode",
         "sway/scratchpad",
@@ -16,9 +17,9 @@
         "custom/media"
     ],
     "modules-center": [
-        "sway/window",
-        "hyprland/window",
-        "hyprland/workspaces"
+        //"sway/window",
+        "wlr/taskbar"
+        //"hyprland/window",
     ],
     "modules-right": [
         "mpd",
@@ -26,7 +27,7 @@
         "pulseaudio",
         "custom/sep",
         // "network",
-        "custom/sep",
+        // "custom/sep",
         "power-profiles-daemon",
         "cpu",
         "memory",
@@ -34,6 +35,7 @@
         "backlight",
         "keyboard-state",
         "sway/language",
+        "hyprland/language",
         "battery",
         "battery#bat2",
         "clock",
@@ -86,6 +88,24 @@
                     "urgent": "",
                     "default": ""
             }
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        // "ignore-list": [
+            // "Alacritty"
+        // ],
+        "app_ids-mapping": {
+            "firefoxdeveloperedition": "firefox-developer-edition"
+        },
+        "rewrite": {
+            "Firefox Web Browser": "Firefox",
+            "Foot Server": "Terminal"
+        }
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -186,16 +206,17 @@
         "power-saver": ""
       }
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "rotate": 90
-    },
+    // "network": {
+    //     // "interface": "wlp2*", // (Optional) To force the use of this interface
+    //     "format-wifi": "({signalStrength}%) ",
+    //     "format-ethernet": "{ipaddr}/{cidr} ",
+    //     "tooltip-format": "{ifname} via {gwaddr} ",
+    //     "format-linked": "{ifname} (No IP) ",
+    //     "format-disconnected": "Disconnected ⚠",
+    //     "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    //     "rotate": 90,
+    //     "on-click": "NetworkManager"
+    // },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
