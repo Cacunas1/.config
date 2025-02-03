@@ -20,6 +20,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --
 set $menu wofi --show run
+set $fm nemo
 
 ### Output configuration
 #
@@ -32,6 +33,26 @@ output * bg /home/cacunas/Downloads/wallpaper/explorer_green_day.jpg fill
 output HDMI-A-2 resolution 1920x1080 position 0,0
 # --Cacunas--
 output eDP-1 resolution 1368x768 position 1920,312 scale 1.5
+
+# Set workspaces output placement ============================================
+# Define outputs
+set $output-small eDP-1
+set $output-big HDMI-A-2
+
+# workspace to displays
+workspace 1 output $output-big
+workspace 2 output $output-big
+workspace 3 output $output-big
+workspace 4 output $output-big
+workspace 5 output $output-big
+workspace 6 output $output-big
+
+workspace 7 output $output-small
+workspace 8 output $output-small
+workspace 9 output $output-small
+workspace 10 output $output-small
+
+
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -78,6 +99,9 @@ output eDP-1 resolution 1368x768 position 1920,312 scale 1.5
 
     # Start your launcher
     bindsym $mod+m exec $menu
+
+    # Open the file manager
+    bindsym $mod+d exec $fm
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -234,12 +258,22 @@ gaps outer 3
 #                       
 # Volume control        
 #                       
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%    
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%    
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # startup applets
 exec_always blueman-applet
 exec_always nm-applet --indicator
 exec_always insync start
 exec_always emacs --daemon
+
+# let numlock to be enabled from the beginning
+input type:keyboard xkb_numlock enabled
+
+# screenshots
+# capture the specified screen area to clipboard
+bindsym $mod+Shift+S exec grim -g "$(slurp)" - | wl-copy
