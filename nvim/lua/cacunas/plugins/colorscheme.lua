@@ -1,11 +1,19 @@
 return {
-  'folke/tokyonight.nvim',
+  -- 'folke/tokyonight.nvim',
+  -- priority = 1000,
+  -- config = function()
+  --   require('tokyonight').setup {
+  --     style = 'night',
+  --   }
+  --
+  --   vim.cmd 'colorscheme tokyonight'
+  -- end,
+  'navarasu/onedark.nvim',
   priority = 1000,
   config = function()
-    require('tokyonight').setup {
-      style = 'night',
+    require('onedark').setup {
+      style = 'darker',
     }
-
-    vim.cmd 'colorscheme tokyonight'
+    vim.cmd 'colorscheme onedark'
   end,
 }

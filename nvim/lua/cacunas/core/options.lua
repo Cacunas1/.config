@@ -39,4 +39,11 @@ opt.scrolloff = 10
 
 -- Set spellchecker languages
 opt.spell = true
-opt.spelllang = { 'en', 'es' }
+-- opt.spelllang = { 'en', 'es' }
+
+if vim.g.neovide then
+  -- Put anything you want to happen only in Neovide here
+  vim.o.guifont = 'Source Code Pro:h12' -- text below applies for VimScript
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_normal_opacity = 0.9
+end
