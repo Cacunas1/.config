@@ -29,28 +29,46 @@ return {
       vim.api.nvim_set_hl(0, 'TermCursor', { fg = '#A6E3A1', bg = '#A6E3A1' })
     end,
   },
-
   {
-    'rebelot/kanagawa.nvim',
-    enabled = true,
-    lazy = false,
+    -- 'folke/tokyonight.nvim',
+    -- priority = 1000,
+    -- config = function()
+    --   require('tokyonight').setup {
+    --     style = 'night',
+    --   }
+    --
+    --   vim.cmd 'colorscheme tokyonight'
+    -- end,
+    'navarasu/onedark.nvim',
     priority = 1000,
     config = function()
-      require('kanagawa').setup {
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = 'none',
-              },
-            },
-          },
-        },
+      require('onedark').setup {
+        style = 'darker',
       }
-      vim.cmd.colorscheme 'kanagawa'
-      vim.api.nvim_set_hl(0, 'TermCursor', { fg = '#A6E3A1', bg = '#A6E3A1' })
+      vim.cmd 'colorscheme onedark'
     end,
   },
+  -- {
+  --   'rebelot/kanagawa.nvim',
+  --   enabled = true,
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require('kanagawa').setup {
+  --       colors = {
+  --         theme = {
+  --           all = {
+  --             ui = {
+  --               bg_gutter = 'none',
+  --             },
+  --           },
+  --         },
+  --       },
+  --     }
+  --     vim.cmd.colorscheme 'kanagawa'
+  --     vim.api.nvim_set_hl(0, 'TermCursor', { fg = '#A6E3A1', bg = '#A6E3A1' })
+  --   end,
+  -- },
 
   {
     'olimorris/onedarkpro.nvim',
