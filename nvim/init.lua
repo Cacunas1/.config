@@ -10,7 +10,9 @@
 -- (may be outdated with newer versions of the plugins,
 -- check for yourself if you're interested in using them)
 
-require 'config.global'
-require 'config.lazy'
-require 'config.autocommands'
-require 'config.redir'
+require("config.global")
+require("config.lazy")
+require("config.autocommands")
+require("config.redir")
+
+vim.env.PATH = os.getenv("PATH")
