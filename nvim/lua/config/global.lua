@@ -102,7 +102,7 @@ vim.opt.formatoptions:remove 'r'
 vim.opt.formatoptions:remove 'o'
 
 -- scroll before end of window
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 10
 
 -- (don't == 0) replace certain elements with prettier ones
 vim.opt.conceallevel = 0
@@ -124,3 +124,10 @@ vim.filetype.add {
 -- additional builtin vim packages
 -- filter quickfix list with Cfilter
 vim.cmd.packadd 'cfilter'
+
+-- Neovide specific setup
+if vim.g.neovide then
+  vim.o.guifont = 'Fira Code:h10' -- text below applies for VimScript
+  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_normal_opacity = 0.9
+end
