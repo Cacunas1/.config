@@ -80,7 +80,7 @@ workspace 10 output $output-small
 #       middle_emulation enabled
 #   }
     input type:keyboard {
-        xkb_layout latam,us
+        xkb_layout us,latam
         xkb_options grp:win_space_toggle
     }
 #
