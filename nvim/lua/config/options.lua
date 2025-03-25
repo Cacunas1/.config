@@ -12,3 +12,6 @@ end
 local opt = vim.opt
 -- Minimal number of screen lines to keep above and below the cursor.
 opt.scrolloff = 10
+
+opt.relativenumber = true
+opt.number = true
