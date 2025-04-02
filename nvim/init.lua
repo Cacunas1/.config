@@ -139,6 +139,7 @@ vim.opt.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.opt.confirm = true
+local map = vim.keymap.set
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -318,12 +319,13 @@ require("lazy").setup({
 				{ "<leader>b", group = "[B]uffer", mode = { "n" } },
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 				{ "<leader>d", group = "[D]ocument" },
-				{ "<leader>r", group = "[R]ename" },
+				{ "<leader>f", group = "[F]ile" },
+				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>r", group = "[R]EPL" },
 				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>v", group = "[V]im" },
-				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader>w", group = "[W]indow" },
 			},
 		},
 	},
@@ -537,9 +539,9 @@ require("lazy").setup({
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map(
-						"<leader>ws",
+						"<leader>sws",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
+						"[S]earch [W]orkspace [S]ymbols"
 					)
 
 					-- Rename the variable under your cursor.
@@ -1141,6 +1143,12 @@ require("lazy").setup({
 			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
+	{
+		"nvimtools/hydra.nvim",
+		config = function()
+			-- create hydras in here
+		end,
+	},
 	-- cacunas: end
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1194,5 +1202,48 @@ require("lazy").setup({
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.keymap.set("n", "<leader>vq", ":qa<cr>", { desc = "[V]im [Q]uit" })
-vim.keymap.set("n", "<leader>vs", ":w<cr>", { desc = "[V]im [W]rite" })
+-- === cacunas mappings: start ===============================================
+-- Misc stuff
+map("n", "<leader>vq", "<cmd>qa<cr>", { desc = "[V]im [Q]uit" })
+map("n", "<leader>vl", "<cmd>Lazy<cr>", { desc = "[V]im [L]azy" })
+
+-- buffers
+map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "[B]uffer [P]rev" })
+map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "[B]uffer [N]ext" })
+
+-- windows
+map("n", "<leader>wh", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<leader>wl", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<leader>wj", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<leader>wk", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
+-- files
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "[F]ile [N]ew" })
+map("n", "<leader>fs", "<cmd>w<cr><esc>", { desc = "[F]ile [S]ave" })
+
+-- tabs
+map("n", "<leader>tl", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader>to", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader>tf", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader>t]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader>td", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader>t[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- Move Lines
+map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+-- cacunas mappings: end =====================================================
