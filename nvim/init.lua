@@ -1247,3 +1247,13 @@ map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 -- cacunas mappings: end =====================================================
+-- cacunas options: begin ====================================================
+vim.g.netrw_liststyle = 3
+
+-- Neovide specific setup
+if vim.g.neovide then
+	vim.o.guifont = "Fira Code:h10"
+	vim.g.neovide_opacity = 0.9
+	vim.g.neovide_normal_opacity = 0.9
+end
+-- cacunas options: end ======================================================
